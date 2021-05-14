@@ -59,17 +59,6 @@ export function DrawerContent(props){
                       <DrawerItem
                         icon={({color, size}) => (
                             <Icon 
-                                name="coins"
-                                color={color}
-                                size={size}
-                            />
-                        )}
-                        label="Minhas Cryptos"
-                        onPress={() => {props.navigation.navigate('Notifications')}}
-                    />
-                      <DrawerItem
-                        icon={({color, size}) => (
-                            <Icon 
                                 name="info"
                                 color={color}
                                 size={size}

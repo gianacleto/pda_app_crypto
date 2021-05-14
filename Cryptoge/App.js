@@ -12,15 +12,11 @@ import { Chip, Text, Image } from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import NotificationsScreen  from '../Cryptoge/screens/HomeScreen'
 import { DrawerContent } from "../Cryptoge/screens/DrawerContent";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import Icon from 'react-native-vector-icons/FontAwesome5'
 import HomeScreen from '../Cryptoge/screens/HomeScreen';
 
-const coin = require('../Cryptoge/assets/imgs/coin.gif')
-
-const Drawer = createDrawerNavigator();
+import NotificationsScreen  from '../Cryptoge/screens/NotificationsScreen'
 
  function App() {
 
@@ -79,13 +75,13 @@ const Drawer = createDrawerNavigator();
     );
   }
 
+  const Drawer = createDrawerNavigator();
   return (
     <>
 
       <NavigationContainer>
         <Drawer.Navigator drawerContent={props => <DrawerContent {...props} userProps={user} /> }>
-          <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+          <Drawer.Screen name="Home" component={HomeScreen} drawerContent={props => <DrawerContent {...props} />} />
         </Drawer.Navigator>
       </NavigationContainer>
     </>
