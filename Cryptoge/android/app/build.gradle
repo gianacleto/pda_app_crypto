@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services' 
 
 import com.android.build.OutputFile
 
@@ -37,13 +38,13 @@ import com.android.build.OutputFile
  *   // bundleInFreeDebug: true,
  *   // bundleInPaidRelease: true,
  *   // bundleInBeta: true,
- *
- *   // whether to disable dev mode in custom build variants (by default only disabled in release)
- *   // for example: to disable dev mode in the staging build type (if configured)
- *   devDisabledInStaging: true,
- *   // The configuration property can be in the following formats
- *   //         'devDisabledIn${productFlavor}${buildType}'
- *   //         'devDisabledIn${buildType}'
+ *buildscript {
+    dependencies {
+        // ... other dependencies
+        classpath 'com.google.gms:google-services:4.3.4'
+        // Add me --- /\
+        }
+}
  *
  *   // the root of your project, i.e. where "package.json" lives
  *   root: "../../",
@@ -165,7 +166,7 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
-
+   
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -210,7 +211,11 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
 }
+
+
+
 
 // Run this once to be able to run the application with BUCK
 // puts all compile dependencies into folder libs for BUCK to use
@@ -218,5 +223,8 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+
+
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

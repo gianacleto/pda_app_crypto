@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "341492908696",
+    "project_id": "cryptogereactnative",
+    "storage_bucket": "cryptogereactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341492908696:android:cf26e2caed2ab4bc6b86ed",
+        "android_client_info": {
+          "package_name": "com.cryptoge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341492908696-n5ur60oi0vmaojhmp5dp9cdac7ods70i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cryptoge",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "341492908696-qingoj65as98qtkkivrdk6673vvfs34s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXYFK07-Bo-1F4c3M-aIHgUAgPaRWvFj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341492908696-qingoj65as98qtkkivrdk6673vvfs34s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
