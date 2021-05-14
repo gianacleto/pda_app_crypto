@@ -1,6 +1,8 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import {
     Avatar, 
     Title, 
@@ -17,8 +19,6 @@ import {
     DrawerItem
 } from '@react-navigation/drawer'
 
-import { logoff } from '../Login'
-
 export function DrawerContent(props){
 
     const [isDarkTheme, setIsDarkTheme] = React.useState(false);
@@ -28,27 +28,22 @@ export function DrawerContent(props){
 
     return (
         <View style={{flex:1}}>
+            
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent}>
                     <View style={styles.userInfoSection}>
                         <View style={{flexDirection:'row', marginTop:15}}>
                             <Avatar.Image 
-                                source={{}}
+                                source={props.userProps.photoUrl}
                             />
-                            <View style={{marginLeft:15, flexDirection: 'column'}}>
-                                <Title style={styles.title}>Gio</Title>
-                                <Caption style={styles.caption}>gio@teste</Caption>
+                            <View style={{marginLeft:10, flexDirection: 'column'}}>
+                                <Title style={styles.title}>{props.userProps.displayName}</Title>
+                                <Caption style={styles.caption}>{props.userProps.email}</Caption>
                             </View>
                         </View>
                     </View>
 
-                    <View style={styles.row}>
-                        <View style={styles.section}>
-                            <Paragraph style={[styles.paragraph, styles.caption]}>R$80</Paragraph>
-                            <Caption style={styles.caption}>Reais</Caption>
-                        </View>
-                    </View>
-
+                   
                     <Drawer.Section style={styles.drawerSection}>
                         <DrawerItem
                         icon={({color, size}) => (
@@ -108,7 +103,8 @@ export function DrawerContent(props){
                         />
                      )}
                     label="Sing Out"
-                    onPress={() => {logoff()}}
+                    onPress={() => {  GoogleSignin.signOut()
+                                      return auth().signOut(); }}
                 />
             </Drawer.Section>
         </View>
@@ -119,15 +115,15 @@ const styles = StyleSheet.create({
         flex: 1, 
     }, 
     userInfoSection: {
-        paddingLeft: 20, 
+        paddingLeft: 5, 
     },
     title: {
-        fontSize: 16, 
+        fontSize: 12, 
         marginTop: 3, 
         fontWeight: 'bold', 
     }, 
     caption: {
-        fontSize:14, 
+        fontSize:10, 
         lineHeight:14,
     },
     row: {

@@ -1,51 +1,50 @@
 
 import React, {useEffect, useState} from 'react';
-import { View,Text, Button, FlatList, StyleSheet} from 'react-native';
+import { View,Text, FlatList, StyleSheet, ScrollView} from 'react-native';
+import { Header, ListItem, Avatar, PricingCard, Button } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import api from '../src/services/api';
 
 const HomeScreen = () => {
 
-//    const [carregando, setCarregando]=useState(true)
     const [dados, setDados]=useState([]);
-
-    // getCoins()(
-    //     () => {
-    //         api.get('v2/assets');
-    //         .then((resp) => resp.json())
-    //     }
-        
-        
-    // )
-    
-    // getCoins();
+    //coletando os dados da api                                                                                                                           
     useEffect( () => {
         api.get("v2/assets").then((response) => {
-            console.log(response.data);
-            setDados(response.data);
+            setDados(response.data.data);
         });
     }, [])
     
 
     return (
+        
         <View style={styles.container}>
-            <FlatList
-                data={dados.data}
-                renderItem={({item}) => <Text style={styles.item}>{item.symbol} - {item.id}</Text>}
-            />
-        {/* { dados.data.map((item) => (
-            <TouchableOpacity>
-                <Text>
-                    moeda: {item.id}
-                </Text>
-            </TouchableOpacity>
-        ))} */}
-            
-        
-        
-            
-        
+            <Header
+                backgroundColor="black"
+                leftComponent={<Icon name="bars" style={styles.headerMenu} onPress={() => props.navigation.openDrawer()} />}
+                centerComponent={{ text: 'Home', style: { color: '#fff' } }}
+                />
+
+        <ScrollView>
+        {
+            dados.map((l, i) => (
+        <TouchableOpacity>
+            <ListItem  bottomDivider>
+                <Avatar source={{}} />
+                <ListItem.Content>
+                <ListItem.Title>{l.symbol}</ListItem.Title>
+                <ListItem.Subtitle>{l.id}</ListItem.Subtitle>
+                <Text>$ {Number(l.priceUsd).toFixed(2)}</Text>
+                </ListItem.Content>
+            </ListItem>
+        </TouchableOpacity>
+            ))
+        }
+        </ScrollView>
+
         </View>
+        
         );
   };
 
@@ -53,6 +52,9 @@ const HomeScreen = () => {
     container: {
      flex: 1,
      paddingTop: 22
+    },
+    headerMenu:{
+        color: '#fff'
     },
     item: {
       padding: 10,

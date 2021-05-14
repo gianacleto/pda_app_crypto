@@ -1,28 +1,31 @@
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import React, { useState, useEffect } from 'react';
-
-function Login(){
-  const [user, setUser] = useState();
+// import auth from '@react-native-firebase/auth';
+// import { GoogleSignin } from '@react-native-google-signin/google-signin';
+// import React, { useState, useEffect } from 'react';
 
 
-  GoogleSignin.configure({
-      webClientId: '341492908696-qingoj65as98qtkkivrdk6673vvfs34s.apps.googleusercontent.com',
-    });
+// export default class  Login extends React.Component {
+//   const [user, setUser] = useState();
+
+
+//   GoogleSignin.configure({
+//     webClientId: '341492908696-qingoj65as98qtkkivrdk6673vvfs34s.apps.googleusercontent.com',
+//   });
     
+//  async function onGoogleButtonPress() {
+//     const { idToken } = await GoogleSignin.signIn();
   
-    async function onGoogleButtonPress() {
-      const { idToken } = await GoogleSignin.signIn();
+//     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
   
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+//     return auth().signInWithCredential(googleCredential);
+//   }
   
-      return auth().signInWithCredential(googleCredential);
-    }
-  
-    function logoff () {
-      GoogleSignin.signOut()
-      return auth().signOut();
-      
-    }  
-}
+//  function logoff () {
+//     GoogleSignin.signOut()
+//     return auth().signOut();
+    
+//   }  
+// }
+// export default Login;
+
+
 
