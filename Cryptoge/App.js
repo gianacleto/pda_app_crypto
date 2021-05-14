@@ -6,11 +6,17 @@
  * @flow strict-local
  */
 
- import React, { useState, useEffect } from 'react';
- import { View, Text, Button} from 'react-native';
- import auth from '@react-native-firebase/auth';
- import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button} from 'react-native';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+//import MainScreen from './screens/MainScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import  HomeScreen  from '../Cryptoge/screens/HomeScreen'
+import  NotificationsScreen  from '../Cryptoge/screens/HomeScreen'
 
+const Drawer = createDrawerNavigator();
 
 GoogleSignin.configure({
   webClientId: '341492908696-qingoj65as98qtkkivrdk6673vvfs34s.apps.googleusercontent.com',
@@ -58,15 +64,25 @@ GoogleSignin.configure({
     );
   }
 
+ 
   return (
-    <View>
-      <Text>Welcome {user.email}</Text>
+    <>
+    {/* <View>
+      <Button title="Open drawer" onPress={() => navigation.openDrawer()} />
+    </View> */}
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+      </Drawer.Navigator>
       <Button
         title="Logoff"
         onPress={() => logoff()}
       />
-    </View>
+    </NavigationContainer>
+    </>
   );
+
 }
 
 export default App;
