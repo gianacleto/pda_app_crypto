@@ -56,18 +56,7 @@ export function DrawerContent(props){
                         label="Home"
                         onPress={() => {props.navigation.navigate('Home')}}
                     />
-                      <DrawerItem
-                        icon={({color, size}) => (
-                            <Icon 
-                                name="info"
-                                color={color}
-                                size={size}
-                            />
-                        )}
-                        label="Informações Pessoais"
-                        onPress={() => {props.navigation.navigate('Home')}}
-                    />
-                    
+                  
                     </Drawer.Section>
                     <Drawer.Section title="Preferences">
                         <TouchableRipple onPress={() => {toggleTheme()}}>

@@ -4,7 +4,7 @@ import { View, StyleSheet} from 'react-native';
 import { Header } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
-const  NotificationsScreen = () =>  {
+const  NotificationsScreen = (props) =>  {
   
     return (
       

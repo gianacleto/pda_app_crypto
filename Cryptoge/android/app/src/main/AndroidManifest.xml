@@ -2,8 +2,11 @@
   package="com.cryptoge">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    
+    
 
     <application
+    
       android:name=".MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
@@ -20,6 +23,10 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+          
       </activity>
+      <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1146949807943869~8413979700"/>
     </application>
 </manifest>

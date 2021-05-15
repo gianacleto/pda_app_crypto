@@ -9,10 +9,9 @@ import api from '../src/services/api';
 const HomeScreen = () => {
 
     const [dados, setDados]=useState([]);
-
     //coletando os dados da api                                                                                                                           
     useEffect( () => {
-        api.get("v2/assets?limit=5").then((response) => {
+        api.get("v2/assets").then((response) => {
             setDados(response.data.data);
         });
     }, [])
@@ -31,14 +30,16 @@ const HomeScreen = () => {
           <TouchableOpacity>
 
             <PricingCard
+                key = {[crypto.symbol]} 
                 color="#4f9deb"
                 title={crypto.symbol}
                 price={'$ '+Number(crypto.priceUsd).toFixed(2)}
                 info={[crypto.id]}
-                button={{ title: 'Mais detalhes ' }}
+                button={{ title: 'Mais detalhes '}}
+                onPress={() => {props.navigation.navigate('Notification')}}
             />
         </TouchableOpacity>
-        
+
             ))}
         </ScrollView>
         </View>
